@@ -1,0 +1,38 @@
+header{
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: -webkit-fill-available;
+    height: 50px;
+    z-index: 2020;
+    background-color: white;
+    font-size: xx-large;
+    padding-left: 30px;
+    border-bottom: 1px solid black;
+}
+.arthur{
+    color: #000000;
+    animation: changeColor 5s infinite linear;
+    text-decoration: none;
+}
+@keyframes changeColor{
+    0% {color:#00000F;}
+    10% {color:#0000FF;}
+    20% {color:#000FFF;}
+    30% {color:#00FFFF;}
+    40% {color:#0FFFFF;}
+    50% {color:#FFFFFF;}
+    60% {color:#0FFFFF;}
+    70% {color:#00FFFF;}
+    80% {color:#000FFF;}
+    90% {color:#0000FF;}
+    100% {color:#00000F;}
+}
+body{
+    margin: 0;
+}
+.back-ground{
+    position: fixed;
+    z-index: -1;
+    width: 100vw;
+}

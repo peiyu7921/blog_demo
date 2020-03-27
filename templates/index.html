@@ -1,0 +1,31 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="{%static 'css/index.css' %}">
+    <link rel="stylesheet" href="{%static 'css/layout.css' %}">
+</head>
+<body>
+    <img src="{%static 'media/backImg.jpg'%}" class="back-ground">
+    <header>
+        <img src="{%static 'media/icon.jpg'%}" height="50" style="border-radius: 50px">
+        <span class="arthur">arthur7921's blog</span>
+        <a href="https://www.github.com/arthur7921" style="margin-left: auto;margin-right: 20px">
+            <img src="{%static 'media/github-icon.jpg'%}" height="50" style="border-radius: 50px">
+        </a>
+    </header>
+    <main>
+    {% for article in articles %}
+        <div class="article">
+            <a href="../article/{{ article.id }}" class="article-title"> {{ article.title }} </a>
+            <p class="article-introduction">{{ article.introduction }}</p>
+            <div class="comment">
+              {{ article.comment_num }} <img src="{% static 'media/comment.png' %}" width="30px">
+            </div>
+        </div>
+    {% endfor %}
+    </main>
+</body>
+</html>

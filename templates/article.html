@@ -1,0 +1,50 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>博文</title>
+    <link rel="stylesheet" href="{%static 'css/index.css' %}">
+    <link rel="stylesheet" href="{%static 'css/comment.css' %}">
+    <link rel="stylesheet" href="{%static 'css/layout.css' %}">
+</head>
+<body>
+    <img src="{%static 'media/backImg.jpg'%}" class="back-ground">
+    <header>
+        <img src="{%static 'media/icon.jpg'%}" height="50" style="border-radius: 50px">
+        <a class="arthur" href="../index/">arthur7921's blog</a>
+        <span style="margin: auto">{{ article.title }}</span>
+        <a href="https://www.github.com/arthur7921" style="margin-left: auto;margin-right: 20px" target="_blank">
+            <img src="{%static 'media/github-icon.jpg'%}" height="50" style="border-radius: 50px">
+        </a>
+    </header>
+    <main>
+        <div class="article-content">
+            <h1> 简介</h1>
+            <p style="border-bottom: 1px solid">
+                {{ article.introduction }}
+            </p>
+            <h2>正文</h2>
+            <span>
+                {{ article.content }}
+            </span>
+        </div>
+        <form method="post"
+              action="/blog/commit-comment/">
+            {% csrf_token %}
+            <input name="id"
+                   style="display: none"
+                   value="{{ article.id }}">
+            <textarea rows="5" style="width: 100%;margin-top: 10px;border-radius: 10px" name="content" required value=""></textarea>
+            <button type="submit" style="border-radius: 10px;padding: 10px 20px 10px 20px;border:0;background-color: rgb(114, 185, 241);">发表</button>
+        </form>
+        {% for comment in comments %}
+                <div class="comment-content">
+                <h3>{{ comment.created_at }}</h3>
+                <span style="padding-left: 10px;">{{ comment.content }}
+                </span>
+                 </div>
+        {% endfor %}
+    </main>
+</body>
+</html>
